@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t nishant/docker-react-app -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true nishant/docker-react-app npm run test
